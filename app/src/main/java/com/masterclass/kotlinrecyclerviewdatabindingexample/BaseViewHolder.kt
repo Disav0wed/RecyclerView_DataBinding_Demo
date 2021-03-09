@@ -1,17 +1,19 @@
 package com.masterclass.kotlinrecyclerviewdatabindingexample
 
+import android.util.Log
 import android.view.View
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.masterclass.kotlinrecyclerviewdatabindingexample.databinding.RecyclerviewRowItemBinding
 
-class BaseViewHolder(val itemView: View): RecyclerView.ViewHolder(itemView) {
+class BaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-    var nameTextView = itemView.findViewById<TextView>(R.id.nameTextView)
+    private val binding = DataBindingUtil.bind<RecyclerviewRowItemBinding>(itemView)
 
-
-    fun setName(name:String)
+    fun bind(name: String)
     {
-        nameTextView.text = name
+        Log.e("BaseViewHolder",name)
+        binding!!.nameTextView.text = name
     }
 
 }
