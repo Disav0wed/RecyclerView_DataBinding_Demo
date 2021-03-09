@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MainRecyclerViewAdapter(private val dataList: List<String>): RecyclerView.Adapter<BaseViewHolder>() {
+class MainRecyclerViewAdapter(private val dataList: List<String>, private val itemClickListener: (String) -> Unit): RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -14,7 +14,7 @@ class MainRecyclerViewAdapter(private val dataList: List<String>): RecyclerView.
 
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(dataList[position])
+        holder.bind(dataList[position], itemClickListener)
     }
 
     override fun getItemCount(): Int {

@@ -10,10 +10,13 @@ class BaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     private val binding = DataBindingUtil.bind<RecyclerviewRowItemBinding>(itemView)
 
-    fun bind(name: String)
+    fun bind(name: String, itemClickListener: (String) -> Unit)
     {
         Log.e("BaseViewHolder",name)
         binding!!.nameTextView.text = name
+        itemView.setOnClickListener {
+            itemClickListener(name)
+        }
     }
 
 }
